@@ -1,15 +1,12 @@
 using UnityEngine;
 
-namespace __MainDir.Scripts.SceneTransition
+public class TransitionArea : MonoBehaviour
 {
-    public class TransitionArea : MonoBehaviour
+    private void OnCollisionEnter(Collision other)
     {
-        private void OnCollisionEnter(Collision other)
+        if (other.transform.CompareTag("Player"))
         {
-            if (other.transform.CompareTag("Player"))
-            {
-                transform.parent.GetComponent<SceneTransition>().InitiateTransition(other.transform);
-            }
+            transform.parent.GetComponent<SceneTransition>().InitiateTransition(other.transform);
         }
     }
 }

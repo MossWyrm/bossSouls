@@ -1,4 +1,3 @@
-using __MainDir.Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

@@ -1,16 +1,14 @@
 using UnityEngine;
 
-namespace __MainDir.Scripts
+public class GameManager : MonoBehaviour
 {
-    public class GameManager : MonoBehaviour
+    public static GameManager Instance;
+
+    private void Awake()
     {
-        public static GameManager Instance;
-
-        private void Awake()
-        {
-            Instance = this;
-        }
-
-        public GameObject player;
+        Instance = this;
     }
+
+    public GameObject player;
+    public PlayerScripts playerScripts;
 }
