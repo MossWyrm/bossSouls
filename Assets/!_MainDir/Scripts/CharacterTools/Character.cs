@@ -5,5 +5,6 @@ using UnityEngine;
 public class Character : ScriptableObject
 {
     public Stats stats = new Stats();
-    public List<AbilityStat> abilities = new List<AbilityStat>();
+    public List<Ability> abilities = new List<Ability>();
+    public GameObject characterPrefab;
 }
