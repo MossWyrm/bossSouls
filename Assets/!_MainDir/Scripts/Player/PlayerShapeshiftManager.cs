@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerShapeshiftManager : MonoBehaviour
 {
     [SerializeField] private Character baseCharacter;
-    private PlayerStats _playerStats;
+    private Player _player;
     private AbilityManager _abilityManager;
     private Character[] _absorbedCharacters = new Character[4];
     private GameObject[] _absorbedCharacterModels = new GameObject[4];
@@ -19,12 +19,35 @@ public class PlayerShapeshiftManager : MonoBehaviour
         baseCharacter = Instantiate(baseCharacter);
         _absorbedCharacters[0] = baseCharacter;
         CurrentCharacter ??= _absorbedCharacters[0];
-        _playerStats ??= GetComponent<PlayerStats>();
+        _player ??= GetComponent<Player>();
         _abilityManager ??= GetComponent<AbilityManager>();
         TransformInto(0);
         _camera = GetComponent<CinemachineCamera>();
     }
+
+    private void OnEnable()
+    {
+        CustomPlayerInputManager.TransformNextPerformed += TransformNext;
+        CustomPlayerInputManager.TransformPreviousPerformed += TransformPrevious;
+    }
+
+    private void OnDisable()
+    {
+        CustomPlayerInputManager.TransformNextPerformed -= TransformNext;
+        CustomPlayerInputManager.TransformPreviousPerformed -= TransformPrevious;
+    }
+
+    public void TransformNext()
+    {
+        var characterTransformRequest = (CurrentCharacterIndex + 1) % 3;
+        RequestTransform(characterTransformRequest);
+    }
     
+    public void TransformPrevious()
+    {
+        var characterTransformRequest = (CurrentCharacterIndex + 2) % 3;
+        RequestTransform(characterTransformRequest);
+    }
     /// <summary>
     /// Use 0 for default character, 1, 2 or 3 for absorbed souls. Returns true when form is changed.
     /// </summary>
@@ -54,6 +77,7 @@ public class PlayerShapeshiftManager : MonoBehaviour
             _absorbedCharacterModels[charNum].transform.SetParent(transform);
         }
         _absorbedCharacterModels[charNum].SetActive(true);
+        _player.NewPlayerModel(_absorbedCharacterModels[charNum]);
         _abilityManager.ChangeCharacter(CurrentCharacter);
     }
 }

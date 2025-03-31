@@ -34,8 +34,6 @@ public class FloorProjectile : SpawnedAbility
     }
 
 
-
-
     private void FixedUpdate()
     {
         if (_stopped) return;

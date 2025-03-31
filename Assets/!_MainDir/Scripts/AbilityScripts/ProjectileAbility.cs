@@ -32,12 +32,11 @@ public class ProjectileAbility : Ability
             InstantiateNewProjectile();
         }
     }
-
-    public override void UseAbility()
+    
+    public override void ActivateAbility()
     {
-        if (cooldownTimer > 0) return;
+        base.ActivateAbility();
         UseProjectile();
-        cooldownTimer = cooldownTime;
     }
 
     private GameObject InstantiateNewProjectile()

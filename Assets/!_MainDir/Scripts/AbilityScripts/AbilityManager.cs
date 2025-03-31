@@ -21,6 +21,12 @@ public class AbilityManager : MonoBehaviour
         }
     }
 
+    public Ability GetAbility(int index)
+    {
+        if (abilities.Count < index + 1 || abilities[index] == null) return null;
+        return abilities[index];
+    }
+
     public void ChangeCharacter(Character character)
     {
         CleanUp();
@@ -54,6 +60,5 @@ public class AbilityManager : MonoBehaviour
         {
             t?.Prepare(gameObject);
         }
-
     }
 }

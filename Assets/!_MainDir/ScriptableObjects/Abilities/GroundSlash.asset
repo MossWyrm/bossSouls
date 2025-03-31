@@ -15,6 +15,9 @@ MonoBehaviour:
   abilityType: 1
   cooldownTime: 2
   cooldownTimer: 0
+  blocksMovement: 0
+  needsTrigger: 0
+  canBreak: 1
   abilityPrefab: {fileID: 4188072815246821022, guid: d35a6deedb7e84e40b81a75146a16ad9, type: 3}
   keepUpright: 1
   speed: 20

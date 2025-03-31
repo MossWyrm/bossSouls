@@ -15,10 +15,12 @@ MonoBehaviour:
   stats:
     maxHealth: 100
     currentHealth: 0
-    speed: 5
-    sprintMultiplier: 2
     armor: 0.522
-    dodgeTimer: 2
+    moveSpeed: 10
+    sprintMultiplier: 2
+    rotationSpeed: 2
+    dodgeDuration: 0
+    dodgeCooldown: 0
   abilities:
   - {fileID: 11400000, guid: 113592ae802684f83849e2d927fc11fa, type: 2}
   characterPrefab: {fileID: 5897950940463709394, guid: cd7817344bb2c4f3a83bf0ec3e0ca490, type: 3}

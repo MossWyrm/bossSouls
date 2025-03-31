@@ -3,8 +3,8 @@ using UnityEngine.Serialization;
 
 public class PlayerScripts: MonoBehaviour
 {
-    public PlayerControls playerControls;
+    [FormerlySerializedAs("playerInputManager")] [FormerlySerializedAs("playerControls")] public CustomPlayerInputManager customPlayerInputManager;
     [FormerlySerializedAs("transformationManager")] public PlayerShapeshiftManager shapeshiftManager;
-    public PlayerStats stats;
+    public Player stats;
     public AbilityManager abilityManager;
 }
